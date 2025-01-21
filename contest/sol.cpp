@@ -12,45 +12,36 @@ using u32 = unsigned int;
 using i64 = long long;
 using u64 = unsigned long long;
 
+using pii = pair<int, int>;
 using vi = vector<int>;
 using vvi = vector<vi>;
 using vb = vector<bool>;
-
-const u64 MAX_K = 100'000;
-const u64 MOD = 998'244'353;
-
-vector<u64> primes;
-
-void sieve() {
-  bitset<MAX_K> is_prime;
-  is_prime.set();
-  // is_prime[0] = false;
-  // is_prime[1] = false;
-  for (u64 i = 2; i <= MAX_K; i++) {
-    if (is_prime[i]) {
-      primes.push_back(i);
-      for (u64 j = i * i; j <= MAX_K; j += i) {
-        is_prime[j] = false;
-      }
-    }
-  }
-}
-
-void solve() {
-  u64 k, n;
-  cin >> k >> n;
-}
 
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  sieve();
-  debug(primes);
+  int n;
+  cin >> n;
 
-  int t;
-  cin >> t;
-  while (t--) {
-    solve();
+  vector<pii> e;
+  for (int i = 0; i < n; i++) {
+    int l, r;
+    cin >> l >> r;
+    e.push_back({l, +1});
+    e.push_back({r, -1});
+  }
+
+  sort(e.begin(), e.end(), [&](pii a, pii b) {
+    return a.first == b.first ? a.second > 0 : a.first < b.first;
+  });
+
+  set<int> begin;
+  begin.insert(e[0].first);
+
+  for (int i = 1; i < 2 * n; i++) {
+    if (e[i].second > 0) {
+      begin.insert()
+    }
   }
 }
